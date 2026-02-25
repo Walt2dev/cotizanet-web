@@ -97,3 +97,45 @@ footer {
 .message { margin-top: 15px; text-align: right; font-size: 0.9rem; }
 .error { color: #e53e3e; }
 .success { color: #38a169; }
+
+
+/* Media Query para Celulares */
+@media (max-width: 768px) {
+    body {
+        overflow: auto; /* Permite scroll si el teclado del celular tapa algo */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .login-container {
+        justify-content: center; /* Centra el formulario */
+        padding-right: 0;        /* Elimina el espacio de la derecha */
+        padding: 20px;
+        align-items: flex-start; /* Lo sube un poco para que no lo tape el teclado */
+        margin-top: 10vh;
+    }
+
+    .login-form {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .input-group label {
+        width: 80px;
+        font-size: 0.9rem;
+    }
+    
+    button {
+        width: 100%; /* Botón ancho completo en móvil para facilitar el tap */
+        float: none;
+    }
+}
