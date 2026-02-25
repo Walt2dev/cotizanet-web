@@ -10,11 +10,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     try {
         // Petición al túnel en tu servidor local
-        const response = await fetch('http://integranet.dyndns.org:81/cotizanet/signin/valdiate_sesion2.php', {
-            method: 'POST',
-            body: formData
-            // Si manejas sesiones después, podrías requerir: credentials: 'include'
-        });
+    // Ahora llamas al archivo local en tu hosting .online
+    const response = await fetch('proxy_validador.php', { 
+        method: 'POST',
+        body: formData
+    });
 
         // Obtenemos la respuesta como texto
         const result = await response.text();
