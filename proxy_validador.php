@@ -1,23 +1,20 @@
 <?php
-// proxy_validador.php
-$url = 'http://integranet.dyndns.org:81/cotizanet/signin/valdiate_sesion2.php';
+// check_tunel.php
+$url = 'http://integranet.dyndns.org:81/cotizanet/signin/tx.php';
 
 $ch = curl_init($url);
-
-// Convertimos el array $_POST en una cadena de consulta (user=admin&pass=123)
-$postData = http_build_query($_POST);
-
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $postData); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// IMPORTANTE: Decirle al servidor local que esto es un formulario estándar
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/x-www-form-urlencoded'
-));
+curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Esperar máximo 10 segundos
 
 $result = curl_exec($ch);
-curl_close($ch);
+$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-echo $result;
+if (curl_errno($ch)) {
+    echo "Error de cURL: " . curl_error($ch);
+} else {
+    echo "Código HTTP: " . $http_code . "<br>";
+    echo "Respuesta del Servidor Local: <b>" . $result . "</b>";
+}
+
+curl_close($ch);
 ?>
