@@ -27,3 +27,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         messageDiv.innerHTML = '<span class="error">Error de conexión con el servidor de autenticación.</span>';
     }
 });
+
+
+async function probar() {
+    const res = await fetch('https://tktiende.dyndns.org/erp/puente.php');
+    const texto = await response.text();
+    document.getElementById('resultado').innerText = texto;
+}
