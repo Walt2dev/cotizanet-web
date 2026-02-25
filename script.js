@@ -6,10 +6,13 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const formData = new FormData(form);
 
     try {
-        const response = await fetch('validar_sesion.php', {
-            method: 'POST',
-            body: formData
-        });
+        // Cambia la línea del fetch en script.js
+const response = await fetch('http://integranet.dyndns.org:81/cotizanet/signin/valdiate_sesion2.php', {
+    method: 'POST',
+    body: formData
+    // Si tienes problemas de cookies/sesiones entre dominios, 
+    // podrías necesitar: credentials: 'include'
+});
 
         const result = await response.text();
 
